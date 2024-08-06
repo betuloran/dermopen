@@ -23,7 +23,9 @@ export default function ApplicationContextProvider({
 
     useEffect(() => {
         if (localStorage.getItem("basketItems")) {
-            setBasketItems(JSON.parse(localStorage.getItem("basketItems")));
+            setBasketItems(
+                JSON.parse(localStorage.getItem("basketItems") || "")
+            );
         }
     }, []);
 
