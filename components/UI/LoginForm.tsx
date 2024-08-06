@@ -8,7 +8,6 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function LoginForm() {
-
     const [loginError, setLoginError] = useState<boolean>(false);
     const authContext = useContext(AuthContext);
     const router = useRouter();
@@ -37,7 +36,10 @@ export default function LoginForm() {
 
                 if (res.status === 200) {
                     authContext?.setUser(data.user);
-                    localStorage.setItem("userInfo",JSON.stringify(formik.values));
+                    localStorage.setItem(
+                        "userInfo",
+                        JSON.stringify(formik.values)
+                    );
                     router.push("/");
                     setLoginError(false);
                 } else {
@@ -47,7 +49,10 @@ export default function LoginForm() {
         },
     });
     return (
-        <form onSubmit={formik.handleSubmit} className="flex flex-col gap-3 max-w-[25rem] mx-auto">
+        <form
+            onSubmit={formik.handleSubmit}
+            className="flex flex-col gap-3 max-w-[25rem] mx-auto"
+        >
             <header className="form-header text-center text-xl md:text-2xl font-semibold text-gray-800">
                 Giriş Yap
             </header>
@@ -89,7 +94,11 @@ export default function LoginForm() {
                 İleri
             </button>
 
-            {loginError && <p className="text-center text-red-500 font-semibold">Kullanıcı adı veya şifre yanlış</p>}
+            {loginError && (
+                <p className="text-center text-red-500 font-semibold">
+                    Kullanıcı adı veya şifre yanlış
+                </p>
+            )}
             <p className="text-center">
                 Henüz bir hesabın yok mu ?<br />
                 <Link

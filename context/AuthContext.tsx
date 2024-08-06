@@ -11,7 +11,7 @@ export type User = {
     password: string;
     email: string;
     orders: any;
-    date:string;
+    date: string;
 };
 
 interface AuthContextInterface {
@@ -26,11 +26,10 @@ export default function AuthContextProvider({
 }: {
     children: React.ReactNode;
 }) {
-    
     const [user, setUser] = useState<User | null>(null);
     const router = useRouter();
     const pathName = usePathname();
-    
+
     useEffect(() => {
         if (localStorage.getItem("userInfo")) {
             (async function () {
@@ -47,14 +46,15 @@ export default function AuthContextProvider({
                     setUser(data.user);
                 }
             })();
-        }else{
-            if(pathName !== "/" && pathName !== "/giris-yap" && pathName !== "/kayit-ol"){
-
+        } else {
+            if (
+                pathName !== "/" &&
+                pathName !== "/giris-yap" &&
+                pathName !== "/kayit-ol"
+            ) {
                 router.push("/");
-
             }
         }
-
     }, []);
 
     return (

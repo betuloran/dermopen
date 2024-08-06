@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FormEvent, useContext, useEffect, useState } from "react";
 
 export default function Profile() {
-
     const authContext = useContext(AuthContext);
     const [isEditing, setIsEditing] = useState<boolean>(false);
 
@@ -31,11 +30,9 @@ export default function Profile() {
             await updateProfile();
         })();
     }
-    useEffect(() =>{
-
+    useEffect(() => {
         setUserData(authContext?.user);
-
-    },[authContext])
+    }, [authContext]);
 
     return (
         <div className="profile">
@@ -68,8 +65,9 @@ export default function Profile() {
                                 <p>Kullanıcı adı</p>
                                 <input
                                     placeholder={
-                                        userData.name + " " + userData.surname
-                                        || ""
+                                        userData.name +
+                                            " " +
+                                            userData.surname || ""
                                     }
                                     disabled={!isEditing}
                                     className={`border-2 w-full border-gray-300 py-2 px-2  placeholder-gray-500 ${

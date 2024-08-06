@@ -57,7 +57,10 @@ export default function OrdersPage() {
                                                                 Toplam:
                                                                 {(order.priceAfterDiscount
                                                                     ? order.priceAfterDiscount
-                                                                    : order.price) * order?.amount}
+                                                                    : order.price) *
+                                                                    (order.amount
+                                                                        ? order.amount
+                                                                        : 1)}
                                                                 TL
                                                             </p>
                                                         </div>

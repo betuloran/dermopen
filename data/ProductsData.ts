@@ -26,7 +26,7 @@ export interface ProductData {
     imagePath: StaticImageData;
     discountPercentage?: number;
     priceAfterDiscount?: number;
-    amount?:number;
+    amount?: number;
 }
 
 export default async function getProductsData() {
@@ -52,18 +52,13 @@ export default async function getProductsData() {
         perfume4,
     ];
 
-    for(const index in imagePaths){
-
-        if(products[index]){
-
+    for (const index in imagePaths) {
+        if (products[index]) {
             products[index].imagePath = imagePaths[index];
-
         }
-
     }
-    
-    products = JSON.parse(JSON.stringify(products));
 
+    products = JSON.parse(JSON.stringify(products));
 
     return products;
 }

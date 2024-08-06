@@ -27,7 +27,7 @@ export default function BestSellerProducts() {
 
                     <div className="best-sellers flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {randomProductNumbers.map(
-                            (randomProductNumber: number,index:number) => {
+                            (randomProductNumber: number, index: number) => {
                                 if (productsContext[randomProductNumber]) {
                                     return (
                                         <ProductCard

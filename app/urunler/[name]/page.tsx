@@ -25,12 +25,19 @@ export default function ProductsPage() {
     const stars: JSX.Element[] = [];
     const [popup, setPopup] = useState<boolean>(false);
 
-    const labels = ["En çok satan","Yüksek müşteri memnuniyeti","Kolay iade","Hemen kapıda teslimat","Ücretsiz kargo"];
+    const labels = [
+        "En çok satan",
+        "Yüksek müşteri memnuniyeti",
+        "Kolay iade",
+        "Hemen kapıda teslimat",
+        "Ücretsiz kargo",
+    ];
 
-    const [randomLabelNumbers,setRandomLabelNumbers] = useState<number[]|null>(null);
+    const [randomLabelNumbers, setRandomLabelNumbers] = useState<
+        number[] | null
+    >(null);
 
     useEffect(() => {
-
         if (!randomLabelNumbers) {
             setRandomLabelNumbers(
                 makeUnique(
@@ -135,7 +142,7 @@ export default function ProductsPage() {
                                 {stars} ({product.ratingAndCount[0]}) (
                                 {product.ratingAndCount[1]})
                             </p>
-                           
+
                             <button
                                 onClick={handleAddToBasket}
                                 className="bg-blue-600 hover:bg-blue-700 duration-150 mb-6 font-semibold text-xl text-white py-2 px-8"

@@ -9,7 +9,11 @@ interface ProductsContext {
 
 export const ProductsContext = createContext<null | ProductData[]>(null);
 
-export default function ProductsContextProvider({children}:{children:React.ReactNode}) {
+export default function ProductsContextProvider({
+    children,
+}: {
+    children: React.ReactNode;
+}) {
     const [productsData, setProductsData] = useState<null | ProductData[]>(
         null
     );
@@ -23,8 +27,8 @@ export default function ProductsContextProvider({children}:{children:React.React
     }, []);
 
     return (
-        <ProductsContext.Provider
-            value={productsData || null}
-        >{children}</ProductsContext.Provider>
+        <ProductsContext.Provider value={productsData || null}>
+            {children}
+        </ProductsContext.Provider>
     );
 }

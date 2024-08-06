@@ -237,7 +237,9 @@ export default function SignUpForm() {
                         className="text-6xl"
                     ></FontAwesomeIcon>
 
-                    <p className="text-center">{submitMessage} <br/> Anasayfaya yönlendiriliyorsunuz. </p>
+                    <p className="text-center">
+                        {submitMessage} <br /> Anasayfaya yönlendiriliyorsunuz.{" "}
+                    </p>
                 </div>
             )}
         </form>

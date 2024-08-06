@@ -10,7 +10,6 @@ import makeUnique from "@/utils/makeUnique";
 import Link from "next/link";
 
 export default function DiscountProducts() {
-
     const productsContext = useContext(ProductsContext);
 
     const randomProductNumbers = makeUnique([
@@ -21,21 +20,18 @@ export default function DiscountProducts() {
     ]);
 
     randomProductNumbers.forEach((randomProductNumber: number) => {
-        
         const randomProduct = productsContext?.[randomProductNumber];
-        
+
         if (randomProduct) {
-            randomProduct.discountPercentage =
-                Math.floor(((Math.random() * 100) % 70) + 10);
+            randomProduct.discountPercentage = Math.floor(
+                ((Math.random() * 100) % 70) + 10
+            );
             randomProduct.priceAfterDiscount =
                 Math.floor(
-                    (randomProduct.price *
-                        randomProduct
-                            .discountPercentage) /
+                    (randomProduct.price * randomProduct.discountPercentage) /
                         100
                 ) + 0.99;
         }
-        
     });
 
     return (

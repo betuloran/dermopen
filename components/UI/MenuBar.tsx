@@ -9,11 +9,10 @@ import { useRouter } from "next/navigation";
 import { useContext } from "react";
 
 export default function MenuBar() {
-
     const applicationContext = useContext(ApplicationContext);
     const authContext = useContext(AuthContext);
     const router = useRouter();
-    
+
     return (
         <div className="menu-bar-overlay absolute top-0 left-0 z-[1000] w-full flex flex-col gap-4 text-2xl font-semibold text-gray-700 items-center justify-center h-[100%] bg-opacity-70 backdrop-blur-sm bg-white ">
             <ul className="text-center flex flex-col gap-4">

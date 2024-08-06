@@ -117,7 +117,8 @@ export default function BasketPage() {
                                 </div>
                             </>
                         )}
-                    {applicationContext?.basketItems?.length > 0 &&
+                    {applicationContext?.basketItems?.length !== undefined &&
+                        applicationContext?.basketItems?.length > 0 &&
                         !basketVerified && (
                             <div className="basket-items flex flex-col gap-2 sm:grid sm:grid-cols-2">
                                 {applicationContext.basketItems.map(
@@ -153,11 +154,12 @@ export default function BasketPage() {
                                                             TL
                                                         </p>
                                                         <p>
-                                                            
                                                             Toplam:{" "}
-                                                            {(basketItem.priceAfterDiscount
+                                                            {basketItem.priceAfterDiscount
                                                                 ? basketItem.priceAfterDiscount
-                                                                : basketItem.price) * basketItem.amount}TL
+                                                                : basketItem.price}
+                                                            {basketItem.amount}
+                                                            TL
                                                         </p>
                                                     </div>
 
@@ -182,13 +184,24 @@ export default function BasketPage() {
                                                                                     [
                                                                                         ...prevState,
                                                                                     ];
-                                                                                newState.find(
-                                                                                    (
-                                                                                        elem
-                                                                                    ) =>
-                                                                                        elem.name ===
-                                                                                        basketItem.name
-                                                                                ).amount += 1;
+
+                                                                                const foundedItem =
+                                                                                    newState.find(
+                                                                                        (
+                                                                                            elem
+                                                                                        ) =>
+                                                                                            elem.name ===
+                                                                                            basketItem.name
+                                                                                    );
+
+                                                                                if (
+                                                                                    foundedItem !==
+                                                                                        undefined &&
+                                                                                    foundedItem.amount !==
+                                                                                        undefined
+                                                                                ) {
+                                                                                    foundedItem.amount += 1;
+                                                                                }
 
                                                                                 return newState;
                                                                             } else
@@ -206,8 +219,10 @@ export default function BasketPage() {
                                                             <button
                                                                 onClick={() => {
                                                                     if (
+                                                                        basketItem.amount !==
+                                                                            undefined &&
                                                                         basketItem.amount >
-                                                                        0
+                                                                            0
                                                                     ) {
                                                                         applicationContext.setBasketItems(
                                                                             (
@@ -221,13 +236,23 @@ export default function BasketPage() {
                                                                                             ...prevState,
                                                                                         ];
 
-                                                                                    newState.find(
-                                                                                        (
-                                                                                            elem
-                                                                                        ) =>
-                                                                                            elem.name ===
-                                                                                            basketItem.name
-                                                                                    ).amount -= 1;
+                                                                                    const foundedItem =
+                                                                                        newState.find(
+                                                                                            (
+                                                                                                elem
+                                                                                            ) =>
+                                                                                                elem.name ===
+                                                                                                basketItem.name
+                                                                                        );
+
+                                                                                    if (
+                                                                                        foundedItem !==
+                                                                                            undefined &&
+                                                                                        foundedItem.amount !==
+                                                                                            undefined
+                                                                                    ) {
+                                                                                        foundedItem.amount -= 1;
+                                                                                    }
 
                                                                                     for (
                                                                                         let i = 0;
@@ -276,7 +301,8 @@ export default function BasketPage() {
                                 )}
                             </div>
                         )}
-                    {applicationContext?.basketItems?.length > 0 &&
+                    {applicationContext?.basketItems?.length &&
+                        applicationContext?.basketItems?.length > 0 &&
                         !basketVerified && (
                             <div className="flex flex-col gap-4 items-center justify-center">
                                 {" "}
