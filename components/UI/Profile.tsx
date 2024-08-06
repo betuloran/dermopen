@@ -81,9 +81,7 @@ export default function Profile() {
                                                     | null
                                                     | undefined
                                             ) => {
-
-                                                if(!prevUserData)
-                                                    return;
+                                                if (!prevUserData) return;
 
                                                 return {
                                                     ...prevUserData,
@@ -110,10 +108,13 @@ export default function Profile() {
                                     }`}
                                     onChange={(e) => {
                                         setUserData(
-                                            (prevUserData: User | null |undefined ) => {
-
-                                                if(!prevUserData)
-                                                    return;
+                                            (
+                                                prevUserData:
+                                                    | User
+                                                    | null
+                                                    | undefined
+                                            ) => {
+                                                if (!prevUserData) return;
                                                 return {
                                                     ...prevUserData,
                                                     email: e.target.value,
@@ -139,9 +140,7 @@ export default function Profile() {
                                                     | null
                                                     | undefined
                                             ) => {
-
-                                                if(!prevUserData)
-                                                    return;
+                                                if (!prevUserData) return;
 
                                                 return {
                                                     ...prevUserData,
@@ -178,9 +177,7 @@ export default function Profile() {
                                                     | null
                                                     | undefined
                                             ) => {
-
-                                                if(!prevUserData)
-                                                    return;
+                                                if (!prevUserData) return;
 
                                                 return {
                                                     ...prevUserData,
