@@ -81,6 +81,10 @@ export default function Profile() {
                                                     | null
                                                     | undefined
                                             ) => {
+
+                                                if(!prevUserData)
+                                                    return;
+
                                                 return {
                                                     ...prevUserData,
                                                     name: e.target.value.split(
@@ -106,12 +110,10 @@ export default function Profile() {
                                     }`}
                                     onChange={(e) => {
                                         setUserData(
-                                            (
-                                                prevUserData:
-                                                    | User
-                                                    | null
-                                                    | undefined
-                                            ) => {
+                                            (prevUserData: User | null |undefined ) => {
+
+                                                if(!prevUserData)
+                                                    return;
                                                 return {
                                                     ...prevUserData,
                                                     email: e.target.value,
@@ -137,6 +139,10 @@ export default function Profile() {
                                                     | null
                                                     | undefined
                                             ) => {
+
+                                                if(!prevUserData)
+                                                    return;
+
                                                 return {
                                                     ...prevUserData,
                                                     phoneNumber: e.target.value,
@@ -172,6 +178,10 @@ export default function Profile() {
                                                     | null
                                                     | undefined
                                             ) => {
+
+                                                if(!prevUserData)
+                                                    return;
+
                                                 return {
                                                     ...prevUserData,
                                                     address: e.target.value,
