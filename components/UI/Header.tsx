@@ -94,7 +94,7 @@ export default function Header() {
                                 <Link href={"/kayit-ol"}>Kayıt Ol</Link>
                                 <Link href={"/sepetim"}>
                                     Sepetim{" "}
-                                    {applicationContext?.basketItems?.length !==
+                                    {applicationContext?.basketItems?.length !== undefined && applicationContext?.basketItems?.length !==
                                     0
                                         ? `(${applicationContext?.basketItems?.length})`
                                         : null}
