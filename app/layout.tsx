@@ -5,6 +5,9 @@ import Footer from "@/components/UI/Footer";
 import ProductsContextProvider from "@/context/ProductsContext";
 import ApplicationContextProvider from "@/context/ApplicationContext";
 import AuthContextProvider from "@/context/AuthContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ToastProvider from "@/components/UI/ToastProvider.";
 
 export const metadata: Metadata = {
     title: "Dermopen Kozmetik Ürünleri",
@@ -21,16 +24,18 @@ export default function RootLayout({
     return (
         <html lang="tr-TR">
             <body className="min-h-screen flex flex-col max-w-[90rem] mx-auto">
-                <AuthContextProvider>
-                    <ApplicationContextProvider>
-                        <ProductsContextProvider>
-                            <Header></Header>
-                            {children}
+                <ToastProvider>
+                    <AuthContextProvider>
+                        <ApplicationContextProvider>
+                            <ProductsContextProvider>
+                                <Header></Header>
+                                {children}
 
-                            <Footer></Footer>
-                        </ProductsContextProvider>
-                    </ApplicationContextProvider>
-                </AuthContextProvider>
+                                <Footer></Footer>
+                            </ProductsContextProvider>
+                        </ApplicationContextProvider>
+                    </AuthContextProvider>
+                </ToastProvider>
             </body>
         </html>
     );

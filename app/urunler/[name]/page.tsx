@@ -11,7 +11,6 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import ReactDOM from "react-dom";
 import Modal from "react-modal";
 import makeUnique from "@/utils/makeUnique";
@@ -116,11 +115,12 @@ export default function ProductsPage() {
                     "basketItems",
                     JSON.stringify(updatedBasketItems)
                 );
-                toast(`${product.name} sepete eklendi.`,{autoClose:3000});
+                toast(`${product.name} sepete eklendi.`);
                 return updatedBasketItems;
             }
         );
     };
+
 
     return (
         <main className="min-h-screen">
@@ -149,7 +149,6 @@ export default function ProductsPage() {
                             >
                                 Sepete Ekle
                             </button>
-                            <ToastContainer />
 
                             <div className="product-description">
                                 <h3 className="text-lg mb-1">
@@ -224,9 +223,6 @@ export default function ProductsPage() {
                                             >
                                                 Sepete Ekle
                                             </button>
-                                            <ToastContainer
-                                                className={"text-sm"}
-                                            />{" "}
                                         </div>
                                     </div>{" "}
                                 </div>
