@@ -32,7 +32,7 @@ export default function Footer() {
                                                 link =
                                                     "/mesafeli-satis-sozlesmesi";
                                                 break;
-                                            case "İade iptal ve değişim":
+                                            case "İade":
                                                 link = "/iade-iptal-ve-degisim";
                                                 break;
                                             default:
