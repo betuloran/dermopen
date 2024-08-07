@@ -1,6 +1,7 @@
 "use client";
 
 import { AuthContext, User } from "@/context/AuthContext";
+import getProfileData from "@/utils/getProfileData";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FormEvent, useContext, useEffect, useState } from "react";
@@ -21,6 +22,11 @@ export default function Profile() {
         });
 
         localStorage.setItem("userInfo", JSON.stringify(userData));
+
+        if(userData){
+            authContext?.setUser(userData);
+        }
+        
     }
 
     function submitHandler(e: FormEvent) {

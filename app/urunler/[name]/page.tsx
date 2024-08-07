@@ -116,7 +116,7 @@ export default function ProductsPage() {
                     "basketItems",
                     JSON.stringify(updatedBasketItems)
                 );
-                toast(`${product.name} sepete eklendi.`);
+                toast(`${product.name} sepete eklendi.`,{autoClose:3000});
                 return updatedBasketItems;
             }
         );

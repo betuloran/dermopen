@@ -89,7 +89,7 @@ export default function Header() {
                             </>
                         )}
                         {!authContext?.user && (
-                            <div className="text-lg flex items-center gap-4">
+                            <div className="text-xl flex items-center gap-4">
                                 <Link href={"/giris-yap"}>Giriş Yap</Link>
                                 <Link href={"/kayit-ol"}>Kayıt Ol</Link>
                                 <Link href={"/sepetim"}>

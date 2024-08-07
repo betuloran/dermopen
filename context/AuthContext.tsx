@@ -48,9 +48,9 @@ export default function AuthContextProvider({
             })();
         } else {
             if (
-                pathName !== "/" &&
-                pathName !== "/giris-yap" &&
-                pathName !== "/kayit-ol"
+                pathName === "/siparisler" ||
+                pathName === "/sepetim" ||
+                pathName === "/profil"
             ) {
                 router.push("/");
             }

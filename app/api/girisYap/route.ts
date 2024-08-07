@@ -7,12 +7,17 @@ export async function POST(request: NextRequest) {
     const dataBase = client.db("dermopen");
     const usersCollection = dataBase.collection("users");
 
-    const user = await usersCollection.findOne(formData);
+    const user = await usersCollection.findOne({
+        email: formData.email,
+        password: formData.password,
+    });
+
+    console.log(formData);
+    console.log(user);
 
     if (user?._id) {
         return NextResponse.json({ user }, { status: 200 });
     } else {
-    
         return NextResponse.json(
             { message: "Hatalı kullanıcı adı veya şifre" },
             { status: 404 }

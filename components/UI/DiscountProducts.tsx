@@ -49,6 +49,7 @@ export default function DiscountProducts() {
                         interval={2500}
                         infiniteLoop={true}
                         showThumbs={false}
+                        stopOnHover={false}
                     >
                         {randomProductNumbers.map(
                             (randomProductNumber: number) => {

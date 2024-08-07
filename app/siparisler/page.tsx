@@ -2,7 +2,13 @@
 
 import { AuthContext } from "@/context/AuthContext";
 import { ProductData } from "@/data/ProductsData";
+import {
+    faBagShopping,
+    faCartShopping,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
+import Link from "next/link";
 import { useContext } from "react";
 
 export default function OrdersPage() {
@@ -20,12 +26,22 @@ export default function OrdersPage() {
                     </header>
 
                     <div className="orders">
-                        {authContext?.user?.orders && (
+                        {authContext?.user?.orders.length > 0 && (
                             <>
                                 {" "}
                                 <div className="basket-items flex flex-col gap-2 md:grid md:grid-cols-2">
-                                    {authContext.user.orders.map(
+                                    {authContext?.user?.orders.map(
                                         (order: ProductData, index: number) => {
+                                            
+                                            const total = Math.floor(
+                                                (order.amount
+                                                    ? order.amount
+                                                    : 1) *
+                                                    (order.priceAfterDiscount
+                                                        ? order.priceAfterDiscount
+                                                        : order.price)
+                                            );
+
                                             return (
                                                 <div
                                                     className="border-2 border-gray-200 py-2 px-2 flex flex-col gap-4"
@@ -55,12 +71,7 @@ export default function OrdersPage() {
                                                             </p>
                                                             <p>
                                                                 Toplam:
-                                                                {(order.priceAfterDiscount
-                                                                    ? order.priceAfterDiscount
-                                                                    : order.price) *
-                                                                    (order.amount
-                                                                        ? order.amount
-                                                                        : 1)}
+                                                                {total}
                                                                 TL
                                                             </p>
                                                         </div>
@@ -77,6 +88,31 @@ export default function OrdersPage() {
                                             );
                                         }
                                     )}
+                                </div>
+                            </>
+                        )}
+                        {authContext?.user?.orders.length <= 0 && (
+                            <>
+                                <div className="flex flex-col gap-2 justify-center">
+                                    <FontAwesomeIcon
+                                        icon={faBagShopping}
+                                        className="text-gray-500 text-7xl mt-4 mb-6"
+                                    ></FontAwesomeIcon>
+
+                                    <p className="text-center text-xl text-gray-500">
+                                        Şuanda herhangi bir siparişiniz
+                                        bulunmuyor :( <br />{" "}
+                                    </p>
+                                    <p className="text-center text-md text-gray-500">
+                                        Sepetinizi görüntülemek için{" "}
+                                        <Link
+                                            href={"/sepetim"}
+                                            className="text-blue-500 hover:text-blue-600 duration-150"
+                                        >
+                                            {" "}
+                                            buraya tıklayın.
+                                        </Link>{" "}
+                                    </p>
                                 </div>
                             </>
                         )}

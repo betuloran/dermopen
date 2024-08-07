@@ -1,7 +1,9 @@
 import { footerData } from "@/data/FooterData";
 import { FooterColumn } from "@/data/FooterData";
-
+import Image from "next/image";
 import Link from "next/link";
+import Logos from "@/public/payments.png";
+
 export default function Footer() {
     return (
         <footer className="bg-blue-600 text-white py-4 px-2 mt-auto">
@@ -51,6 +53,7 @@ export default function Footer() {
                         );
                     }
                 )}
+                <Image src={Logos} alt="payments logos" width={250} height={25} className="ml-auto mt-auto h-8"></Image>
             </div>
         </footer>
     );

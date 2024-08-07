@@ -52,7 +52,7 @@ export default function SignUpForm() {
                 const { message } = await response.json();
                 setSubmitMessage(message);
                 setTimeout(() => {
-                    router.push("/giris-yap");
+                    router.push("/");
                 }, 1500);
             })();
         },
@@ -125,7 +125,7 @@ export default function SignUpForm() {
                 </div>
             )}
             {!submitMessage && signUpPhase === 2 && (
-                <div className="flex flex-col items-center gap-5">
+                <div className="flex flex-col  gap-5 w-full max-w-[25rem]">
                     {["email", "password", "passwordCheck"].map((key) => {
                         const typedKey = key as
                             | "email"
@@ -184,7 +184,7 @@ export default function SignUpForm() {
                 </div>
             )}
             {!submitMessage && signUpPhase === 3 && (
-                <div className="flex flex-col items-center gap-5">
+                <div className="flex flex-col  gap-5 w-full max-w-[25rem]">
                     {["phoneNumber", "address"].map((key) => {
                         const typedKey = key as "phoneNumber" | "address";
                         return (
@@ -231,7 +231,7 @@ export default function SignUpForm() {
                 </div>
             )}
             {submitMessage && (
-                <div className="text-green-500 text-2xl font-medium flex flex-col items-center gap-4">
+                <div className="text-green-500 text-2xl font-medium flex flex-col  gap-4 w-full max-w-[25rem]">
                     <FontAwesomeIcon
                         icon={faCircleCheck}
                         className="text-6xl"

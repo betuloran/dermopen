@@ -126,6 +126,15 @@ export default function BasketPage() {
                                         basketItem: ProductData,
                                         index: number
                                     ) => {
+                                        const total = Math.floor(
+                                            (basketItem.amount
+                                                ? basketItem.amount
+                                                : 1) *
+                                                (basketItem.priceAfterDiscount
+                                                    ? basketItem.priceAfterDiscount
+                                                    : basketItem.price)
+                                        );
+
                                         return (
                                             <div
                                                 className="border-2 border-gray-200 py-2 px-2 flex flex-col gap-4"
@@ -153,14 +162,7 @@ export default function BasketPage() {
                                                                 : basketItem.price}
                                                             TL
                                                         </p>
-                                                        <p>
-                                                            Toplam:{" "}
-                                                            {basketItem.priceAfterDiscount
-                                                                ? basketItem.priceAfterDiscount
-                                                                : basketItem.price}
-                                                            {basketItem.amount}
-                                                            TL
-                                                        </p>
+                                                        <p>Toplam: {total} TL</p>
                                                     </div>
 
                                                     <div className="flex items-center gap-2">
@@ -301,7 +303,7 @@ export default function BasketPage() {
                                 )}
                             </div>
                         )}
-                    {applicationContext?.basketItems?.length &&
+                    {!!applicationContext?.basketItems?.length &&
                         applicationContext?.basketItems?.length > 0 &&
                         !basketVerified && (
                             <div className="flex flex-col gap-4 items-center justify-center">
